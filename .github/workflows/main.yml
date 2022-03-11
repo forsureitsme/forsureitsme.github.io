@@ -26,7 +26,7 @@ jobs:
           cd $GITHUB_WORKSPACE
           npx yarn
           npx yarn build
-          touch .nojekyll
+          touch build/.nojekyll
 
       - name: Deploy to GitHub Pages
         if: success()
