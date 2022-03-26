@@ -1,7 +1,8 @@
 <script>
   import { writable } from 'svelte/store';
+  import { db } from '../db.svelte';
 
-  let { adjectives } = DATABASE;
+  let { adjectives } = db;
 
   const adjectiveIsAnimating = writable(
     new Array(adjectives.length).fill(false).fill(true, 0, 1)
