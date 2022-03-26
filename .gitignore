@@ -7,4 +7,6 @@
 /.pnp.*
 node_modules/
 
+# Build process
 build/
+.env
