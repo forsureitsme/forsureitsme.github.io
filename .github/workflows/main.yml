@@ -22,6 +22,8 @@ jobs:
         uses: actions/setup-node@v3.0.0
         
       - name: Install dependencies and build
+        env:
+          NOTION_KEY: ${{ secrets.NOTION_KEY }}
         run: |
           cd $GITHUB_WORKSPACE
           npx yarn
