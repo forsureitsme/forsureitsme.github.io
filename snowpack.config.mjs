@@ -1,11 +1,8 @@
 import autoprefixer from 'autoprefixer';
 import sveltePreprocess from 'svelte-preprocess';
-import db from './api/notion.mjs';
+import DATABASE from './api/notion.mjs';
 
 export default {
-  env: {
-    db,
-  },
   mount: {
     public: '/',
     src: '/dist',
@@ -15,6 +12,7 @@ export default {
       '@snowpack/plugin-svelte',
       {
         preprocess: sveltePreprocess({
+          replace: [['DATABASE', JSON.stringify(DATABASE)]],
           postcss: {
             plugins: [autoprefixer],
           },

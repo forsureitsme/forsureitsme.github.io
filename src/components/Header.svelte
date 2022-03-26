@@ -1,7 +1,7 @@
 <script>
   import { writable } from 'svelte/store';
 
-  let { adjectives } = __SNOWPACK_ENV__.db;
+  let { adjectives } = DATABASE;
 
   const adjectiveIsAnimating = writable(
     new Array(adjectives.length).fill(false).fill(true, 0, 1)
