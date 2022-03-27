@@ -25,7 +25,10 @@
   <h4>
     {#each adjectives as adjective, adjectiveIndex}
       {#if $adjectiveIsAnimating[adjectiveIndex]}
-        <div on:animationend={() => leaveAdjective(adjectiveIndex)}>
+        <div
+          class="adjective"
+          on:animationend={() => leaveAdjective(adjectiveIndex)}
+        >
           {adjective}
         </div>
       {/if}
@@ -44,11 +47,11 @@
     position: relative;
     height: 1rem;
   }
-  h4 div {
+  h4 .adjective {
     position: absolute;
     inset: 0;
     opacity: 0;
-    animation: motion-blur 3s linear;
+    animation: motion-blur 2s linear;
   }
 
   @keyframes motion-blur {

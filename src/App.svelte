@@ -1,16 +1,18 @@
 <script>
   import Header from './components/Header.svelte';
   import Container from './components/Container.svelte';
-  import Main from './components/Main.svelte';
+  import Main from './components/Glass.svelte';
   import Background from './components/Background.svelte';
 </script>
 
 <Background />
-<Container>
-  <Main>
-    <Header />
-  </Main>
-</Container>
+<div class="app">
+  <Container>
+    <Main>
+      <Header />
+    </Main>
+  </Container>
+</div>
 
 <style>
   :root {
@@ -24,7 +26,17 @@
     color: white;
     text-shadow: 0 0 0.1rem;
     min-height: 100vh;
-    background-color: black;
     font-family: 'Fredoka', sans-serif;
+    overflow: hidden;
+  }
+
+  :global(.body) {
+    padding: 0;
+    margin: 0;
+  }
+
+  .app {
+    max-height: 100vh;
+    overflow-y: auto;
   }
 </style>

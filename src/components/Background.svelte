@@ -1,4 +1,14 @@
+<script>
+  import Snow from './Snow.svelte';
+</script>
+
+<Snow />
+
 <style>
+  :root {
+    background-color: black;
+  }
+
   :root::before,
   :root::after {
     content: '';
