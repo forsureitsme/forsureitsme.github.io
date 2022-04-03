@@ -30,13 +30,13 @@
     overflow: hidden;
   }
 
-  :global(.body) {
+  :global(body) {
     padding: 0;
     margin: 0;
   }
 
   .app {
-    max-height: 100vh;
+    height: 100vh;
     overflow-y: auto;
   }
 </style>

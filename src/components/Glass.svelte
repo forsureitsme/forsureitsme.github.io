@@ -4,7 +4,7 @@
 
 <style>
   .glass {
-    margin: 5vw 5vh;
+    margin: 5vh 5vw;
     width: 100%;
 
     box-shadow: 0 1rem 5rem 0 rgba(0, 0, 0, 0.3);
