@@ -1,16 +1,22 @@
 <script>
   import Header from './components/Header.svelte';
   import Container from './components/Container.svelte';
-  import Main from './components/Glass.svelte';
+  import Glass from './components/Glass.svelte';
   import Background from './components/Background.svelte';
+  import Spaces from './components/Spaces.svelte';
+  import Techs from './components/Techs.svelte';
 </script>
 
 <Background />
 <div class="app">
   <Container>
-    <Main>
-      <Header />
-    </Main>
+    <Glass>
+      <main>
+        <Header />
+        <Spaces />
+        <Techs />
+      </main>
+    </Glass>
   </Container>
 </div>
 
@@ -38,5 +44,9 @@
   .app {
     height: 100vh;
     overflow-y: auto;
+  }
+
+  main {
+    margin: 1em;
   }
 </style>

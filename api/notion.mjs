@@ -5,15 +5,44 @@ const notion = new Client({
   auth: process.env.NOTION_KEY,
 });
 
-let dbAdjectives = await notion.databases.query({
-  database_id: '920b7a2d4d544304b1cd497e333fa45a',
+let database = await notion.blocks.children.list({
+  block_id: 'a6371f6532ab47d1aab8c225f2d7468e',
 });
 
-const adjectives = dbAdjectives.results.reduce((adjectives, result) => {
-  const newAdjective = result?.properties?.Name?.title[0]?.plain_text;
-  return !newAdjective ? adjectives : [...adjectives, newAdjective];
-}, []);
+database = await Promise.all(
+  database.results.map(async (block) => {
+    let db = await notion.databases.retrieve({
+      database_id: block.id,
+    });
 
-export default {
-  adjectives,
-};
+    const title = db.title[0].plain_text.toLowerCase();
+
+    db = await notion.databases.query({
+      database_id: db.id,
+    });
+
+    const data = await Promise.all(
+      db.results.map(async (row) => {
+        if (row.object === 'page') {
+          const block = await notion.blocks.retrieve({
+            block_id: row.id,
+          });
+
+          return block.child_page.title;
+        }
+
+        return row;
+      })
+    );
+
+    return {
+      [title]: data,
+    };
+  })
+);
+
+database = database.reduce((acc, curr) => {
+  return { ...acc, ...curr };
+}, {});
+
+export default database;
