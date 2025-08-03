@@ -1,0 +1,11 @@
+:root {
+    --purple: #670e94;
+    --lilac: #733ca9;
+    --pink: #ea5092;
+    --yellow: #f9f962;
+    --red: #c31c41;
+}
+
+* {
+    color: white;
+}

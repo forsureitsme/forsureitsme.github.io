@@ -1,6 +1,7 @@
 ---
-import "@/styles/base.css";
+import "@/styles/global.css";
 import Menu from "./menu.astro";
+import NoiseSvg from "@/img/noise.svg";
 const { title } = Astro.props;
 ---
 
@@ -18,3 +19,33 @@ const { title } = Astro.props;
 		<slot />
 	</body>
 </html>
+
+<style
+	type="text/css"
+	define:vars={{
+		"noise-url": `url(${NoiseSvg.src})`,
+	}}
+>
+	html {
+		background-image: linear-gradient(
+			to right,
+			var(--purple),
+			var(--lilac),
+			var(--purple)
+		);
+	}
+
+	html:before {
+		content: '';
+		background-image: var(--noise-url);
+		opacity: 20%;
+		position: absolute;
+		inset: 0;
+	}
+
+	body {
+		min-height: 100vh;
+		margin: 0;
+	}
+
+</style>
